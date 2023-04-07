@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 
 import {auth} from './config/firebase';
-import {createUserWithEmailAndPassword} from 'firebase/auth'; //createUserWithEmailAndPassword is a firebase keyword which takes form attributes and connects with firebase file in our directory.
+import {signInWithEmailAndPassword} from 'firebase/auth';
 
-const Post1 = () => {
+const Post = () => {
     
     const[email,setEmail] = useState("");
     const[password,setPassword] = useState("");
     console.log(auth.currentUser.email);
 
     const submit = async ()=>{
-        createUserWithEmailAndPassword(auth,email,password).then((userCredential)=>{
+      signInWithEmailAndPassword(auth,email,password).then((userCredential)=>{
         console.log(userCredential)
       }).catch((error)=>{
         console.log(error);
@@ -32,11 +32,11 @@ const Post1 = () => {
     
   </div>
   
-  <button type="submit" class="btn btn-primary">signup</button>
+  <button type="submit" class="btn btn-primary">signin</button>
 </form>
    </div>
    </>
   )
 }
 
-export default Post1;
+export default Post;
